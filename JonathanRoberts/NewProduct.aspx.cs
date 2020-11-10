@@ -28,7 +28,7 @@ namespace JonathanRoberts
                 Sku = Txb_sku.Text,
                 Brand = Txb_brand.Text,
                 Name = Txb_name.Text,
-                Price = Convert.ToDouble(Txb_price.Text),
+                Price = Convert.ToDouble(Txb_price.Text.Replace(",", ".")),
                 IsEnabled = Rdb_disabled.Checked ? true : false,
                 MinQuantity = Convert.ToInt32(Txb_min_quantity.Text),
                 MaxQuantity = Convert.ToInt32(Txb_max_quantity.Text),
@@ -53,6 +53,11 @@ namespace JonathanRoberts
             }
 
             product.Id = i;
+        }
+
+        protected void Btn_Cancel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MainPage.aspx");
         }
     }
 }

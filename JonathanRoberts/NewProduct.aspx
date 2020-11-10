@@ -59,6 +59,9 @@
             <br />
             <br />
             <asp:Button ID="Btn_ConfirmNewProduct" runat="server" Text="Insert New Product" OnClick="Btn_ConfirmNewProduct_Click" />
+            <br />
+            <br />
+            <asp:Button ID="Btn_Cancel" runat="server" Text="Cancel" OnClick="Btn_Cancel_Click" />
         </div>
     </form>
 </body>

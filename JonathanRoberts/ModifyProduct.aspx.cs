@@ -19,25 +19,26 @@ namespace JonathanRoberts
 
             var product = (Product)Session["ProductToModify"];
 
-            Lbl_id.Text += product.Id;
-            Lbl_sku.Text += product.Sku;
-            Lbl_brand.Text += product.Brand;
-            Txb_brand.Text = product.Brand;
-            Lbl_name.Text += product.Name;
-            Txb_name.Text = product.Name;
-            Txb_price.Text = product.Price.ToString();
-            Rdb_enabled.Checked = product.IsEnabled;
-            Lbl_enabled.Text += product.IsEnabled ? "Enabled" : "Disabled";
-            Txb_min_quantity.Text += product.MinQuantity.ToString();
-            Txb_max_quantity.Text = product.MaxQuantity.ToString();
-            Lbl_product_type.Text += product.ProductType.ToString();
+            if(!Page.IsPostBack)
+            {
+                Lbl_id.Text += product.Id;
+                Lbl_sku.Text += product.Sku;
+                Lbl_brand.Text += product.Brand;
+                Txb_brand.Text = product.Brand;
+                Lbl_name.Text += product.Name;
+                Txb_name.Text = product.Name;
+                Txb_price.Text = product.Price.ToString();
+                Rdb_enabled.Checked = product.IsEnabled;
+                Lbl_enabled.Text += product.IsEnabled ? "Enabled" : "Disabled";
+                Txb_min_quantity.Text += product.MinQuantity.ToString();
+                Txb_max_quantity.Text = product.MaxQuantity.ToString();
+                Lbl_product_type.Text += product.ProductType.ToString();
+            }
         }
 
         protected void Btn_SaveChanges_Click(object sender, EventArgs e)
         {
             var list = (List<Product>)Session["ProductList"];
-
-            //var product = (Product)Session["ProductToModify"];
 
             list[Convert.ToInt32(Session["ProductToModifyIndex"])].Brand = Txb_brand.Text;
             list[Convert.ToInt32(Session["ProductToModifyIndex"])].Name = Txb_name.Text;
@@ -46,7 +47,6 @@ namespace JonathanRoberts
             list[Convert.ToInt32(Session["ProductToModifyIndex"])].MinQuantity = Convert.ToInt32(Txb_min_quantity.Text);
             list[Convert.ToInt32(Session["ProductToModifyIndex"])].MaxQuantity = Convert.ToInt32(Txb_max_quantity.Text);
 
-            //list.Insert(Convert.ToInt32(Session["ProductToModifyIndex"]), product);
             Session["ProductList"] = list;
 
             Response.Redirect("MainPage.aspx");

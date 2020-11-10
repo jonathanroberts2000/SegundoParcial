@@ -20,8 +20,6 @@
         <asp:DropDownList ID="DropOptionList" runat="server" OnSelectedIndexChanged="DropOptionList_OnChange" AutoPostBack="true">
             <asp:ListItem></asp:ListItem>
             <asp:ListItem Value="NewProduct.aspx">Add Product</asp:ListItem>
-            <asp:ListItem Value="ModifyProduct.aspx">Modify Product</asp:ListItem>
-            <asp:ListItem Value="DeleteProduct.aspx">Delete Product</asp:ListItem>
             <asp:ListItem Value="ordId1">Order By Product Name</asp:ListItem>
             <asp:ListItem Value="ordId2">Order By Product Type</asp:ListItem>
         </asp:DropDownList>
