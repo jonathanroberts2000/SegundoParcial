@@ -19,7 +19,10 @@ namespace JonathanRoberts
             Lbl_UserName.Text = string.Format("Username: {0}", user.UserName);
             Lbl_UserFullName.Text = string.Format("{0} {1}", user.Name, user.LastName);
             Lbl_UserType.Text = string.Format("User Profile: {0}", user.ProfileType.ToString());
-            LoadProducts();
+            if(!Page.IsPostBack)
+            {
+                LoadProducts();
+            }
         }
 
         private void LoadProducts()
@@ -105,14 +108,19 @@ namespace JonathanRoberts
             }
         }
 
-        protected void Grilla_RowCommand(Object sender, GridViewCommandEventArgs e)
+        protected void Grilla_RowCommand(Object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "BorrarItem")
+            if (e.CommandName == "DeleteProduct")
             {
-                var id = e.CommandArgument.ToString();
+                var productsList = (List<Product>)Session["ProductList"];
 
-                //Sacar de la lista
-                Response.Write(id.ToString());
+                var element = productList.Where(x => x.Id == Convert.ToInt32(e.CommandArgument)).SingleOrDefault();
+
+                productList.Remove(element);
+
+                Session["ProductList"] = productList;
+                GridProducts.DataSource = productList;
+                GridProducts.DataBind();
             }
         }
     }

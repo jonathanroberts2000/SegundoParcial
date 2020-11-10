@@ -7,4 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
+namespace JonathanRoberts
+{
 
+
+    public partial class Contact
+    {
+    }
+}

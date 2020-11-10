@@ -1,4 +1,4 @@
-﻿<%@ Page EnableEventValidation="true" Language="C#" AutoEventWireup="true" CodeBehind="MainPage.aspx.cs" Inherits="JonathanRoberts.MainPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MainPage.aspx.cs" Inherits="JonathanRoberts.MainPage" EnableEventValidation="true" %>
 
 <!DOCTYPE html>
 
@@ -27,22 +27,23 @@
         <br />
         <div>
             <%--<asp:GridView ID="GridProducts" runat="server" HorizontalAlign="Center" Width="631px" Height="158px"></asp:GridView>--%>
-            <asp:GridView id="GridProducts" OnRowCommand="Grilla_RowCommand" AutoGenerateColumns="false" runat="server" HorizontalAlign="Center" >
+            <asp:GridView ID="GridProducts" OnRowCommand="Grilla_RowCommand" AutoGenerateColumns="false" runat="server" HorizontalAlign="Center" >
                 <Columns>
                     <asp:BoundField DataField="Id" HeaderText="id" />
-                    <asp:BoundField DataField="Sku" HeaderText="Sku" />
-                    <asp:BoundField DataField="Brand" HeaderText="Brand" />
-                    <asp:BoundField DataField="Name" HeaderText="Name" />
-                    <asp:BoundField DataField="Price" HeaderText="Price" />
-                    <asp:BoundField DataField="IsEnabled" HeaderText="Enabled" />
-                    <asp:BoundField DataField="MinQuantity" HeaderText="MinQuantity" />
-                    <asp:BoundField DataField="MaxQuantity" HeaderText="MaxQuantity" />
-                    <asp:BoundField DataField="ProductType" HeaderText="ProductType" />
+                    <asp:BoundField DataField="Sku" HeaderText="sku" />
+                    <asp:BoundField DataField="Brand" HeaderText="brand" />
+                    <asp:BoundField DataField="Name" HeaderText="name" />
+                    <asp:BoundField DataField="Price" HeaderText="price" />
+                    <asp:BoundField DataField="IsEnabled" HeaderText="enabled" />
+                    <asp:BoundField DataField="MinQuantity" HeaderText="minQuantity" />
+                    <asp:BoundField DataField="MaxQuantity" HeaderText="maxQuantity" />
+                    <asp:BoundField DataField="ProductType" HeaderText="productType" />
 
-                   <asp:TemplateField HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center"  HeaderStyle-Width="70px"  ShowHeader="False" HeaderStyle-BorderStyle="None" ControlStyle-BorderStyle="None" ItemStyle-BorderStyle="None" >
+                   <asp:TemplateField HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center"  HeaderStyle-Width="70px"  ShowHeader="False" HeaderStyle-BorderStyle="None" ControlStyle-BorderStyle="None" ItemStyle-BorderStyle="None">
                     <ItemTemplate>
-                        <asp:Button OnClientClick="return confirm('¿Confirma la eliminación del item?'); this.disabled = true" 
-                         CommandName="BorrarItem" CommandArgument='<%#Eval("id")%>' runat="server" Text="Delete Product"/>
+                        <asp:ImageButton OnClientClick="return confirm('¿Confirma la eliminación del item?'); this.disabled = true" 
+                         CommandName="DeleteProduct" CommandArgument='<%#Eval("Id")%>' runat="server" Text="Delete Product" CausesValidation="false"
+                            UseSubmitBehavior="false"/>
                     </ItemTemplate>
                    </asp:TemplateField>
                 </Columns>
