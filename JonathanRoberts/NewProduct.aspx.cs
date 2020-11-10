@@ -21,7 +21,7 @@ namespace JonathanRoberts
         protected void Btn_ConfirmNewProduct_Click(object sender, EventArgs e)
         {
             var list = (List<Product>)Session["ProductList"];
-
+            
             var sku = Lbl_sku.Text;
             var brand = Lbl_brand.Text;
             
