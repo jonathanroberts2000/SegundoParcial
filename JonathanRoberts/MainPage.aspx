@@ -17,7 +17,8 @@
             <asp:Label ID="Lbl_UserFullName" runat="server" Text=""></asp:Label>
         </div>
         <br />
-        <asp:DropDownList ID="DropOptionList" runat="server" OnTextChanged="DropOptionList_SelectedIndexChanged">
+        <asp:DropDownList ID="DropOptionList" runat="server" OnSelectedIndexChanged="DropOptionList_OnChange" AutoPostBack="true">
+            <asp:ListItem></asp:ListItem>
             <asp:ListItem Value="NewProduct.aspx">Add Product</asp:ListItem>
             <asp:ListItem Value="ModifyProduct.aspx">Modify Product</asp:ListItem>
             <asp:ListItem Value="DeleteProduct.aspx">Delete Product</asp:ListItem>
@@ -42,7 +43,7 @@
                    <asp:TemplateField HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center"  HeaderStyle-Width="70px"  ShowHeader="False" HeaderStyle-BorderStyle="None" ControlStyle-BorderStyle="None" ItemStyle-BorderStyle="None">
                     <ItemTemplate>
                         <asp:ImageButton OnClientClick="return confirm('¿Confirma la eliminación del item?'); this.disabled = true" 
-                         CommandName="DeleteProduct" CommandArgument='<%#Eval("Id")%>' runat="server" Text="Delete Product" CausesValidation="false"
+                         CommandName="DeleteProduct" CommandArgument='<%#Eval("Sku")%>' runat="server" Text="Delete Product" CausesValidation="false"
                             UseSubmitBehavior="false"/>
                     </ItemTemplate>
                    </asp:TemplateField>

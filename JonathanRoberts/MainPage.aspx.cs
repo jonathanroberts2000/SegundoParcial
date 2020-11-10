@@ -50,16 +50,32 @@ namespace JonathanRoberts
             }
         }
 
-        protected void DropOptionList_SelectedIndexChanged(object sender, EventArgs e)
+        protected void Grilla_RowCommand(Object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "DeleteProduct")
+            {
+                var list = (List<Product>)Session["ProductList"];
+
+                var element = list.Where(x => x.Sku == e.CommandArgument.ToString()).SingleOrDefault();
+
+                list.Remove(element);
+
+                Session["ProductList"] = list;
+                GridProducts.DataSource = list;
+                GridProducts.DataBind();
+            }
+        }
+
+        protected void DropOptionList_OnChange(object sender, EventArgs e)
         {
             var user = (User)Session["UserEntity"];
 
-            if(user.ProfileType == EProfile.Administrator || user.ProfileType == EProfile.Operator)
+            if (user.ProfileType == EProfile.Administrator || user.ProfileType == EProfile.Operator)
             {
                 switch (DropOptionList.SelectedItem.Value)
                 {
                     case "NewProduct.aspx":
-                        if(user.ProfileType == EProfile.Administrator && DropOptionList.SelectedItem.Selected)
+                        if (user.ProfileType == EProfile.Administrator && DropOptionList.SelectedItem.Selected)
                         {
                             Response.Redirect("NewProduct.aspx");
                         }
@@ -71,6 +87,7 @@ namespace JonathanRoberts
                         }
                         break;
                     case "ModifyProduct.aspx":
+                        Session["ProductToModify"] = "";
                         Response.Redirect("ModifyProduct.aspx");
                         break;
                     case "DeleteProduct.aspx":
@@ -100,27 +117,12 @@ namespace JonathanRoberts
                         Session["ProductList"] = productList.OrderBy(x => x.ProductType).ToList();
                         break;
                 }
-            }else
+            }
+            else
             {
                 Session["ErrorId"] = 1;
                 Session["ErrorMessage"] = "You do not have permission to execute this action.";
                 Response.Redirect("ErrorPage.aspx");
-            }
-        }
-
-        protected void Grilla_RowCommand(Object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
-        {
-            if (e.CommandName == "DeleteProduct")
-            {
-                var productsList = (List<Product>)Session["ProductList"];
-
-                var element = productList.Where(x => x.Id == Convert.ToInt32(e.CommandArgument)).SingleOrDefault();
-
-                productList.Remove(element);
-
-                Session["ProductList"] = productList;
-                GridProducts.DataSource = productList;
-                GridProducts.DataBind();
             }
         }
     }

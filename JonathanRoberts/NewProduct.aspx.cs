@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,19 @@ namespace JonathanRoberts
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            var user = (User)Session["UserEntity"];
+            Lbl_UserName.Text = string.Format("Username: {0}", user.UserName);
+            Lbl_UserFullName.Text = string.Format("{0} {1}", user.Name, user.LastName);
+            Lbl_UserType.Text = string.Format("User Profile: {0}", user.ProfileType.ToString());
+        }
 
+        protected void Btn_ConfirmNewProduct_Click(object sender, EventArgs e)
+        {
+            var list = (List<Product>)Session["ProductList"];
+
+            var sku = Lbl_sku.Text;
+            var brand = Lbl_brand.Text;
+            
         }
     }
 }
