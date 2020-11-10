@@ -150,6 +150,15 @@ namespace JonathanRoberts
         protected global::System.Web.UI.WebControls.Label Lbl_enabled;
 
         /// <summary>
+        /// Control Lbl_stateEnabled.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Lbl_stateEnabled;
+
+        /// <summary>
         /// Control Rdb_enabled.
         /// </summary>
         /// <remarks>
@@ -157,6 +166,24 @@ namespace JonathanRoberts
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton Rdb_enabled;
+
+        /// <summary>
+        /// Control Lbl_stateDisabled.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Lbl_stateDisabled;
+
+        /// <summary>
+        /// Control Rdb_disabled.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton Rdb_disabled;
 
         /// <summary>
         /// Control Lbl_min_quantity.

@@ -37,7 +37,8 @@
             <asp:TextBox ID="Txb_price" runat="server"></asp:TextBox>
             <br />
             <asp:Label ID="Lbl_enabled" runat="server" Text="Enabled: "></asp:Label>
-            <asp:RadioButton ID="Rdb_enabled" runat="server" />
+            <asp:Label ID="Lbl_stateEnabled" runat="server" Text="Enabled"></asp:Label><asp:RadioButton ID="Rdb_enabled" runat="server" GroupName="MyGroup"/>
+            <asp:Label ID="Lbl_stateDisabled" runat="server" Text="Disabled"></asp:Label><asp:RadioButton ID="Rdb_disabled" runat="server" GroupName="MyGroup"/>
             <br />
             <asp:Label ID="Lbl_min_quantity" runat="server" Text="Insert Min Quantity: "></asp:Label>
             <asp:TextBox ID="Txb_min_quantity" runat="server"></asp:TextBox>

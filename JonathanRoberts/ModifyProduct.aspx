@@ -16,6 +16,38 @@
             <br />
             <asp:Label ID="Lbl_UserFullName" runat="server" Text=""></asp:Label>
         </div>
+        <br />
+        <br />
+        <div>
+            <asp:Label ID="Lbl_id" runat="server" Text="Id: "></asp:Label>
+            <br />
+            <asp:Label ID="Lbl_sku" runat="server" Text="Sku: "></asp:Label>
+            <br />
+            <asp:Label ID="Lbl_brand" runat="server" Text="Insert New Product Brand: "></asp:Label>
+            <asp:TextBox ID="Txb_brand" runat="server"></asp:TextBox>
+            <br />
+            <asp:Label ID="Lbl_name" runat="server" Text="Insert New Name: "></asp:Label>
+            <asp:TextBox ID="Txb_name" runat="server"></asp:TextBox>
+            <br />
+            <asp:Label ID="Lbl_price" runat="server" Text="Insert New Price: "></asp:Label>
+            <asp:TextBox ID="Txb_price" runat="server"></asp:TextBox>
+            <br />
+            <asp:Label ID="Lbl_enabled" runat="server" Text="Enabled New Status: "></asp:Label>
+            <br />
+            <asp:Label ID="Lbl_stateEnabled" runat="server" Text="Enabled"></asp:Label><asp:RadioButton ID="Rdb_enabled" runat="server" GroupName="MyGroup"/>
+            <asp:Label ID="Lbl_stateDisabled" runat="server" Text="Disabled"></asp:Label><asp:RadioButton ID="Rdb_disabled" runat="server" GroupName="MyGroup"/>
+            <br />
+            <asp:Label ID="Lbl_min_quantity" runat="server" Text="Insert New Min Quantity: "></asp:Label>
+            <asp:TextBox ID="Txb_min_quantity" runat="server"></asp:TextBox>
+            <br />
+            <asp:Label ID="Lbl_max_quantity" runat="server" Text="Insert New Max Quantity: "></asp:Label>
+            <asp:TextBox ID="Txb_max_quantity" runat="server"></asp:TextBox>
+            <br />
+            <asp:Label ID="Lbl_product_type" runat="server" Text="Product Type: "></asp:Label>
+            <br />
+            <br />
+            <asp:Button ID="Btn_SaveChanges" runat="server" Text="Save Changes" OnClick="Btn_SaveChanges_Click" />
+        </div>
     </form>
 </body>
 </html>

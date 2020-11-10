@@ -29,7 +29,7 @@ namespace JonathanRoberts
                 Brand = Txb_brand.Text,
                 Name = Txb_name.Text,
                 Price = Convert.ToDouble(Txb_price.Text),
-                IsEnabled = Rdb_enabled.Checked,
+                IsEnabled = Rdb_disabled.Checked ? true : false,
                 MinQuantity = Convert.ToInt32(Txb_min_quantity.Text),
                 MaxQuantity = Convert.ToInt32(Txb_max_quantity.Text),
                 ProductType = (EProductType)Convert.ToInt32(Txb_product_type.Text)

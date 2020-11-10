@@ -93,22 +93,22 @@ namespace JonathanRoberts
                             Response.Redirect("ErrorPage.aspx");
                         }
                         break;
-                    case "ModifyProduct.aspx":
-                        Session["ProductToModify"] = "";
-                        Response.Redirect("ModifyProduct.aspx");
-                        break;
-                    case "DeleteProduct.aspx":
-                        if (user.ProfileType == EProfile.Administrator)
-                        {
-                            Response.Redirect("DeleteProduct.aspx");
-                        }
-                        else
-                        {
-                            Session["ErrorId"] = 1;
-                            Session["ErrorMessage"] = "You do not have permission to execute this action.";
-                            Response.Redirect("ErrorPage.aspx");
-                        }
-                        break;
+                    //case "ModifyProduct.aspx":
+                    //    Session["ProductToModify"] = "";
+                    //    Response.Redirect("ModifyProduct.aspx");
+                    //    break;
+                    //case "DeleteProduct.aspx":
+                    //    if (user.ProfileType == EProfile.Administrator)
+                    //    {
+                    //        Response.Redirect("DeleteProduct.aspx");
+                    //    }
+                    //    else
+                    //    {
+                    //        Session["ErrorId"] = 1;
+                    //        Session["ErrorMessage"] = "You do not have permission to execute this action.";
+                    //        Response.Redirect("ErrorPage.aspx");
+                    //    }
+                    //    break;
                     case "ordId1":
                         productList = (List<Product>)Session["ProductList"];
                         productList = productList.OrderBy(x => x.Name).ToList();
