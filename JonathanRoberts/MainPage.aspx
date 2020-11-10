@@ -41,14 +41,14 @@
                     <ItemTemplate>
                         <asp:ImageButton OnClientClick="return confirm('¿Confirma la eliminación del producto?'); this.disabled = true" 
                          CommandName="DeleteProduct" CommandArgument='<%#Eval("Sku")%>' runat="server" Text="Delete Product" CausesValidation="false"
-                            UseSubmitBehavior="false"/>
+                            UseSubmitBehavior="false" ImageUrl="img/delete.png"/>
                     </ItemTemplate>
                    </asp:TemplateField>
                     <asp:TemplateField HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center"  HeaderStyle-Width="70px"  ShowHeader="False" HeaderStyle-BorderStyle="Ridge" ControlStyle-BorderStyle="None" ItemStyle-BorderStyle="None">
                     <ItemTemplate>
                         <asp:ImageButton OnClientClick="return confirm('¿Desea modificar el producto?'); this.disabled = true" 
                          CommandName="ModifyProduct" CommandArgument='<%#Eval("Sku")%>' runat="server" Text="Delete Product" CausesValidation="false"
-                            UseSubmitBehavior="false"/>
+                            UseSubmitBehavior="false" ImageUrl="img/modify.png"/>
                     </ItemTemplate>
                    </asp:TemplateField>
                 </Columns>
