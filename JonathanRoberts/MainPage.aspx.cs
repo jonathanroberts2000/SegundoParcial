@@ -52,17 +52,24 @@ namespace JonathanRoberts
 
         protected void Grilla_RowCommand(Object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
         {
+            var list = (List<Product>)Session["ProductList"];
+
             if (e.CommandName == "DeleteProduct")
             {
-                var list = (List<Product>)Session["ProductList"];
-
                 var element = list.Where(x => x.Sku == e.CommandArgument.ToString()).SingleOrDefault();
 
                 list.Remove(element);
-
+                
                 Session["ProductList"] = list;
                 GridProducts.DataSource = list;
                 GridProducts.DataBind();
+            }else if(e.CommandName == "ModifyProduct")
+            {
+                var element = list.Where(x => x.Sku == e.CommandArgument.ToString()).SingleOrDefault();
+
+                Session["ProductToModify"] = element;
+                Session["ProductToModifyIndex"] = list.IndexOf(element);
+                Response.Redirect("ModifyProduct.aspx");
             }
         }
 

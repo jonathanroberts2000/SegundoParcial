@@ -27,7 +27,6 @@
         </asp:DropDownList>
         <br />
         <div>
-            <%--<asp:GridView ID="GridProducts" runat="server" HorizontalAlign="Center" Width="631px" Height="158px"></asp:GridView>--%>
             <asp:GridView ID="GridProducts" OnRowCommand="Grilla_RowCommand" AutoGenerateColumns="false" runat="server" HorizontalAlign="Center" >
                 <Columns>
                     <asp:BoundField DataField="Id" HeaderText="id" />
@@ -40,15 +39,21 @@
                     <asp:BoundField DataField="MaxQuantity" HeaderText="maxQuantity" />
                     <asp:BoundField DataField="ProductType" HeaderText="productType" />
 
-                   <asp:TemplateField HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center"  HeaderStyle-Width="70px"  ShowHeader="False" HeaderStyle-BorderStyle="None" ControlStyle-BorderStyle="None" ItemStyle-BorderStyle="None">
+                   <asp:TemplateField HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center"  HeaderStyle-Width="70px"  ShowHeader="False" HeaderStyle-BorderStyle="Ridge" ControlStyle-BorderStyle="None" ItemStyle-BorderStyle="None">
                     <ItemTemplate>
-                        <asp:ImageButton OnClientClick="return confirm('¿Confirma la eliminación del item?'); this.disabled = true" 
+                        <asp:ImageButton OnClientClick="return confirm('¿Confirma la eliminación del producto?'); this.disabled = true" 
                          CommandName="DeleteProduct" CommandArgument='<%#Eval("Sku")%>' runat="server" Text="Delete Product" CausesValidation="false"
                             UseSubmitBehavior="false"/>
                     </ItemTemplate>
                    </asp:TemplateField>
+                    <asp:TemplateField HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center"  HeaderStyle-Width="70px"  ShowHeader="False" HeaderStyle-BorderStyle="Ridge" ControlStyle-BorderStyle="None" ItemStyle-BorderStyle="None">
+                    <ItemTemplate>
+                        <asp:ImageButton OnClientClick="return confirm('¿Desea modificar el producto?'); this.disabled = true" 
+                         CommandName="ModifyProduct" CommandArgument='<%#Eval("Sku")%>' runat="server" Text="Delete Product" CausesValidation="false"
+                            UseSubmitBehavior="false"/>
+                    </ItemTemplate>
+                   </asp:TemplateField>
                 </Columns>
-                
             </asp:GridView>
         </div>
     </form>
