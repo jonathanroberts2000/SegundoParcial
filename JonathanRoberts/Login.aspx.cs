@@ -29,6 +29,11 @@ namespace JonathanRoberts
 
         protected void LoginButton_Click(object sender, EventArgs e)
         {
+            //LINEAS SOLO PARA TESTEO, BORRARLAS ANTERS DE PRESENTAR
+            UserNameTbx.Text = "jroberts";
+            PasswordTbx.Text = "Jr28ar86$6";
+            ///
+
             var user = UserNameTbx.Text;
             var password = PasswordTbx.Text;
 
