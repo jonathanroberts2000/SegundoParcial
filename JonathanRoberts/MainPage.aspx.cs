@@ -53,23 +53,33 @@ namespace JonathanRoberts
         protected void Grilla_RowCommand(Object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
         {
             var list = (List<Product>)Session["ProductList"];
+            var user = (User)Session["UserEntity"];
 
-            if (e.CommandName == "DeleteProduct")
+            if (user.ProfileType == EProfile.Administrator || user.ProfileType == EProfile.Operator)
             {
-                var element = list.Where(x => x.Sku == e.CommandArgument.ToString()).SingleOrDefault();
+                if (e.CommandName == "DeleteProduct")
+                {
+                    var element = list.Where(x => x.Sku == e.CommandArgument.ToString()).SingleOrDefault();
 
-                list.Remove(element);
-                
-                Session["ProductList"] = list;
-                GridProducts.DataSource = list;
-                GridProducts.DataBind();
-            }else if(e.CommandName == "ModifyProduct")
+                    list.Remove(element);
+
+                    Session["ProductList"] = list;
+                    GridProducts.DataSource = list;
+                    GridProducts.DataBind();
+                }
+                else if (e.CommandName == "ModifyProduct")
+                {
+                    var element = list.Where(x => x.Sku == e.CommandArgument.ToString()).SingleOrDefault();
+
+                    Session["ProductToModify"] = element;
+                    Session["ProductToModifyIndex"] = list.IndexOf(element);
+                    Response.Redirect("ModifyProduct.aspx");
+                }
+            }else
             {
-                var element = list.Where(x => x.Sku == e.CommandArgument.ToString()).SingleOrDefault();
-
-                Session["ProductToModify"] = element;
-                Session["ProductToModifyIndex"] = list.IndexOf(element);
-                Response.Redirect("ModifyProduct.aspx");
+                Session["ErrorId"] = 1;
+                Session["ErrorMessage"] = "You do not have permission to execute this action.";
+                Response.Redirect("ErrorPage.aspx");
             }
         }
 
