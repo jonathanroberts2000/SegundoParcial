@@ -1,4 +1,5 @@
-﻿using Entities;
+﻿using BLL;
+using Entities;
 using System;
 using System.Collections.Generic;
 using System.Drawing.Printing;
@@ -27,30 +28,13 @@ namespace JonathanRoberts
 
         private void LoadProducts()
         {
-            productList = new List<Product>
-            {
-                new Product { Id = 1, Sku = "AAA-1010", Brand = "Microsoft CSP", Name = "Microsoft 365 Business", IsEnabled = true, MaxQuantity = 5000, MinQuantity = 1, Price = 8.85, ProductType = EProductType.Licence },
-                new Product { Id = 2, Sku = "AAA-5056", Brand = "Check Point", Name = "Check Point CloudGuard SaaS", IsEnabled = true, MaxQuantity = 500, MinQuantity = 50, Price = 200.00, ProductType = EProductType.Software },
-                new Product { Id = 3, Sku = "AAA-0789", Brand = "A10 Networks", Name = "Thunder ADC", IsEnabled = true, MaxQuantity = 50, MinQuantity = 1, Price = 2000.59, ProductType = EProductType.Hardware },
-                new Product { Id = 4, Sku = "GGG-1852", Brand = "Microsoft CSP Perpetual", Name = "Windows Server CAL - 16 Licence Core", MinQuantity = 1, MaxQuantity = 2000, IsEnabled = false, Price = 2387.48, ProductType = EProductType.Software },
-                new Product { Id = 5, Sku = "AAA-1824", Brand = "Microsoft CSP", Name = "Microsoft Azure Reserved Instance", MinQuantity = 1, MaxQuantity = 25, IsEnabled = true, ProductType = EProductType.Cloud, Price = 289.99 }
-            };
-
-            if(Session["ProductList"] != null)
-            {
-                productList = (List<Product>)Session["ProductList"];
-                GridProducts.DataSource = productList;
-                GridProducts.DataBind();
-                Session["ProductList"] = productList;
-            }else
-            {
-                GridProducts.DataSource = productList;
-                GridProducts.DataBind();
-                Session["ProductList"] = productList;
-            }
+            var productBLL = new ProductBLL();
+            var productList = productBLL.LoadProducts();
+            GridProducts.DataSource = productList;
+            GridProducts.DataBind();
         }
 
-        protected void Grilla_RowCommand(Object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
+        protected void Grilla_RowCommand(Object sender, GridViewCommandEventArgs e)
         {
             var list = (List<Product>)Session["ProductList"];
             var user = (User)Session["UserEntity"];

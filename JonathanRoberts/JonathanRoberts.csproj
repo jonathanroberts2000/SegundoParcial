@@ -264,6 +264,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{A0361CE9-B071-48E0-9369-89DACFEC8C50}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{67fe5178-ab2a-4faa-85dc-8bbc9d906896}</Project>
       <Name>Entities</Name>
