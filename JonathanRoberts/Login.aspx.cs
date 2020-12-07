@@ -18,7 +18,17 @@ namespace JonathanRoberts
 
         protected void LoginButton_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             var userBLL = new UserBLL();
+=======
+            //LINEAS SOLO PARA TESTEO, BORRARLAS ANTERS DE PRESENTAR
+            UserNameTbx.Text = "jroberts";
+            PasswordTbx.Text = "Jr28ar86$6";
+            ///
+
+            var user = UserNameTbx.Text;
+            var password = PasswordTbx.Text;
+>>>>>>> origin/branch_bck
 
             var user = userBLL.GetUser(UserNameTbx.Text, PasswordTbx.Text);
 
