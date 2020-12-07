@@ -1,4 +1,5 @@
-﻿using Entities;
+﻿using BLL;
+using Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,39 +21,11 @@ namespace JonathanRoberts
 
         protected void Btn_ConfirmNewProduct_Click(object sender, EventArgs e)
         {
-            var list = (List<Product>)Session["ProductList"];
+            var productBLL = new ProductBLL();
 
-            Product newProduct = new Product
-            {
-                Id = Convert.ToInt32(Txb_id.Text),
-                Sku = Txb_sku.Text,
-                Brand = Txb_brand.Text,
-                Name = Txb_name.Text,
-                Price = Convert.ToDouble(Txb_price.Text.Replace(",", ".")),
-                IsEnabled = Rdb_disabled.Checked ? true : false,
-                MinQuantity = Convert.ToInt32(Txb_min_quantity.Text),
-                MaxQuantity = Convert.ToInt32(Txb_max_quantity.Text),
-                ProductType = (EProductType)Convert.ToInt32(Txb_product_type.Text)
-            };
+            productBLL.InsertNewProduct(Txb_sku.Text, Txb_brand.Text, Convert.ToDouble(Txb_price.Text.Replace(",", ".")), Txb_name.Text, Rdb_disabled.Checked, Convert.ToInt32(Txb_min_quantity.Text), Convert.ToInt32(Txb_max_quantity.Text), Convert.ToInt32(Txb_product_type.Text));
 
-            ValidateNewProduct(ref newProduct);
-
-            list.Add(newProduct);
-            Session["ProductList"] = list;
             Response.Redirect("MainPage.aspx");
-        }
-
-        private void ValidateNewProduct(ref Product product)
-        {
-            int i = 0;
-            var list = (List<Product>)Session["ProductList"];
-            
-            while(list.Select(x => x.Id).ToList().Contains(i))
-            {
-                i++;
-            }
-
-            product.Id = i;
         }
 
         protected void Btn_Cancel_Click(object sender, EventArgs e)

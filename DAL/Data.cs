@@ -27,23 +27,77 @@ namespace DAL
                 command.Parameters.AddRange(sqlParameters);
             }
 
-            var da = new SqlDataAdapter();
-            da.SelectCommand = command;
+            var da = new SqlDataAdapter
+            {
+                SelectCommand = command
+            };
 
             try
             {
                 dbConnection.Open();
                 da.Fill(dataTable);
             }
-            catch (Exception)
+            catch (Exception exc)
             {
-
-                throw;
-            }finally
+                throw new Exception(exc.Message);
+            }
+            finally
             {
                 dbConnection.Close();
             }
             return dataTable;
+        }
+
+        public int ExecuteWithoutResult(string query, SqlParameter[] parameters)
+        {
+            int rowsAffected = 0;
+            SqlCommand command = new SqlCommand(query, dbConnection);
+
+            if(parameters != null && parameters.Length > 0)
+            {
+                command.Parameters.AddRange(parameters);
+            }
+
+            try
+            {
+                dbConnection.Open();
+                rowsAffected = command.ExecuteNonQuery();
+            }
+            catch (Exception exc)
+            {
+                throw new Exception(exc.Message);
+            }
+            finally
+            {
+                dbConnection.Close();
+            }
+            return rowsAffected;
+        }
+
+        public object ExecuteScalar(string query, SqlParameter[] parameters)
+        {
+            object result = null;
+            SqlCommand command = new SqlCommand(query, dbConnection);
+
+            if(parameters != null && parameters.Length > 0)
+            {
+                command.Parameters.AddRange(parameters);
+            }
+
+            try
+            {
+                dbConnection.Open();
+                result = command.ExecuteScalar();
+            }
+            catch (Exception exc)
+            {
+                throw new Exception(exc.Message);
+            }
+            finally
+            {
+                dbConnection.Close();
+            }
+            return result;
         }
     }
 }

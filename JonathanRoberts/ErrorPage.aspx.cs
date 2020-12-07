@@ -24,6 +24,7 @@ namespace JonathanRoberts
                     Response.Redirect("Login.aspx");
                     break;
                 case 1:
+                case 2:
                     Response.Redirect("MainPage.aspx");
                     break;
             }

@@ -21,9 +21,6 @@
         <br />
 
         <div>
-            <asp:Label ID="Lbl_id" runat="server" Text="Insert Id: "></asp:Label>
-            <asp:TextBox ID="Txb_id" runat="server"></asp:TextBox>
-            <br />
             <asp:Label ID="Lbl_sku" runat="server" Text="Insert Sku: "></asp:Label>
             <asp:TextBox ID="Txb_sku" runat="server"></asp:TextBox>
             <br />

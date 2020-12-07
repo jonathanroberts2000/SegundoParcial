@@ -24,18 +24,31 @@
             <asp:ListItem Value="ordId2">Order By Product Type</asp:ListItem>
         </asp:DropDownList>
         <br />
+        <br />
+        <asp:Label ID="lbl_search_name" runat="server" Text="write product name: "></asp:Label>
+        <asp:TextBox ID="Txb_search_name" runat="server"></asp:TextBox>
+        <br />
+        <asp:Label ID="lbl_search_sku" runat="server" Text="write product sku: "></asp:Label>
+        <asp:TextBox ID="Txb_search_sku" runat="server"></asp:TextBox>
+        <br />
+        <asp:Label ID="lbl_search_brand" runat="server" Text="write product brand: "></asp:Label>
+        <asp:TextBox ID="Txb_search_brand" runat="server"></asp:TextBox>
+        <br />
+        <br />
+        <asp:Button ID="Btn_search" runat="server" Text="Search products" OnClick="Btn_search_Click" />
+        <br />
         <div>
             <asp:GridView ID="GridProducts" OnRowCommand="Grilla_RowCommand" AutoGenerateColumns="false" runat="server" HorizontalAlign="Center" >
                 <Columns>
-                    <asp:BoundField DataField="Id" HeaderText="id" />
-                    <asp:BoundField DataField="Sku" HeaderText="sku" />
-                    <asp:BoundField DataField="Brand" HeaderText="brand" />
-                    <asp:BoundField DataField="Name" HeaderText="name" />
-                    <asp:BoundField DataField="Price" HeaderText="price" />
-                    <asp:BoundField DataField="IsEnabled" HeaderText="enabled" />
-                    <asp:BoundField DataField="MinQuantity" HeaderText="minQuantity" />
-                    <asp:BoundField DataField="MaxQuantity" HeaderText="maxQuantity" />
-                    <asp:BoundField DataField="ProductType" HeaderText="productType" />
+                    <asp:BoundField DataField="Id" HeaderText="Id" />
+                    <asp:BoundField DataField="Sku" HeaderText="Sku" />
+                    <asp:BoundField DataField="Brand" HeaderText="Brand" />
+                    <asp:BoundField DataField="Name" HeaderText="Name" />
+                    <asp:BoundField DataField="Price" HeaderText="Price" />
+                    <asp:BoundField DataField="IsEnabled" HeaderText="Enabled" />
+                    <asp:BoundField DataField="MinQuantity" HeaderText="Minimum Quantity" />
+                    <asp:BoundField DataField="MaxQuantity" HeaderText="Maximum Quantity" />
+                    <asp:BoundField DataField="ProductType" HeaderText="Product Type" />
 
                    <asp:TemplateField HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center"  HeaderStyle-Width="70px"  ShowHeader="False" HeaderStyle-BorderStyle="Ridge" ControlStyle-BorderStyle="None" ItemStyle-BorderStyle="None">
                     <ItemTemplate>

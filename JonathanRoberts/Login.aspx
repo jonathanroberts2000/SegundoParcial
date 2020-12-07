@@ -9,7 +9,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div style="text-align:center">Bienvenido</div>
+        <div style="text-align:center">Welcome</div>
         <div style="height: 161px">
             <asp:Label ID="Lbl_userText" runat="server" Text="User Name"></asp:Label>
             <br />

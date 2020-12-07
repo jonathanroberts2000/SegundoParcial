@@ -1,4 +1,5 @@
-﻿using Entities;
+﻿using BLL;
+using Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,10 @@ namespace JonathanRoberts
             Lbl_UserFullName.Text = string.Format("{0} {1}", user.Name, user.LastName);
             Lbl_UserType.Text = string.Format("User Profile: {0}", user.ProfileType.ToString());
 
-            var product = (Product)Session["ProductToModify"];
+            var productBLL = new ProductBLL();
+            var product = productBLL.GetProductBySku(Session["SkuToModify"].ToString());
 
-            if(!Page.IsPostBack)
+            if (!Page.IsPostBack)
             {
                 Lbl_id.Text += product.Id;
                 Lbl_sku.Text += product.Sku;
@@ -38,16 +40,20 @@ namespace JonathanRoberts
 
         protected void Btn_SaveChanges_Click(object sender, EventArgs e)
         {
-            var list = (List<Product>)Session["ProductList"];
+            //var list = (List<Product>)Session["ProductList"];
 
-            list[Convert.ToInt32(Session["ProductToModifyIndex"])].Brand = Txb_brand.Text;
-            list[Convert.ToInt32(Session["ProductToModifyIndex"])].Name = Txb_name.Text;
-            list[Convert.ToInt32(Session["ProductToModifyIndex"])].Price = Convert.ToDouble(Txb_price.Text.Replace(",", "."));
-            list[Convert.ToInt32(Session["ProductToModifyIndex"])].IsEnabled = Rdb_enabled.Checked;
-            list[Convert.ToInt32(Session["ProductToModifyIndex"])].MinQuantity = Convert.ToInt32(Txb_min_quantity.Text);
-            list[Convert.ToInt32(Session["ProductToModifyIndex"])].MaxQuantity = Convert.ToInt32(Txb_max_quantity.Text);
+            //list[Convert.ToInt32(Session["ProductToModifyIndex"])].Brand = Txb_brand.Text;
+            //list[Convert.ToInt32(Session["ProductToModifyIndex"])].Name = Txb_name.Text;
+            //list[Convert.ToInt32(Session["ProductToModifyIndex"])].Price = Convert.ToDouble(Txb_price.Text.Replace(",", "."));
+            //list[Convert.ToInt32(Session["ProductToModifyIndex"])].IsEnabled = Rdb_enabled.Checked;
+            //list[Convert.ToInt32(Session["ProductToModifyIndex"])].MinQuantity = Convert.ToInt32(Txb_min_quantity.Text);
+            //list[Convert.ToInt32(Session["ProductToModifyIndex"])].MaxQuantity = Convert.ToInt32(Txb_max_quantity.Text);
 
-            Session["ProductList"] = list;
+            var productBLL = new ProductBLL();
+
+            productBLL.UpdateProduct(Session["SkuToModify"].ToString(), Txb_name.Text, Convert.ToDouble(Txb_price.Text), Rdb_enabled.Checked, Convert.ToInt32(Txb_min_quantity.Text), Convert.ToInt32(Txb_max_quantity.Text));
+
+            //Session["ProductList"] = list;
 
             Response.Redirect("MainPage.aspx");
         }
